@@ -32,17 +32,17 @@ jobs:
         run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
         shell: bash
       - name: Create subfolder
-        run: mkdir acorn && mv ./* corn/ 1>/dev/null
+        run: mkdir corn && mv ./* corn/ 1>/dev/null
         continue-on-error: true
       - name: Create distributable zip file
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r9 acorn.zip acorn
+          args: zip -qq -r9 corn.zip corn
       - name: Upload zip as release asset
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: corn.zip
-          asset_name: acorn-${{ steps.get_version.outputs.version }}-php-${{ matrix.php-versions }}.zip
+          asset_name: corn-${{ steps.get_version.outputs.version }}-php-${{ matrix.php-versions }}.zip
           tag: ${{ github.ref }}
           overwrite: true
