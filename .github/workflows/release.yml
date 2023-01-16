@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: ['8.0', '8.1']
+        php-versions: ['7.4', '8.0']
 
     steps:
       - name: Checkout
@@ -32,7 +32,7 @@ jobs:
         run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
         shell: bash
       - name: Create subfolder
-        run: mkdir corn && mv ./* corn/ 1>/dev/null
+        run: mkdir corn && mv ./* corn/ 2>/dev/null
         continue-on-error: true
       - name: Create distributable zip file
         uses: montudor/action-zip@v0.1.0
